@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>44</string>
+					<string>42</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>43</string>
+					<string>41</string>
 					<key>Timestamp</key>
-					<string>736335338.956272</string>
+					<string>736342012.9272569</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,16 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>
+				<string>                
 </string>
 				<key>leading</key>
-				<string>                })
-                .sheet(isPresented: $showDetails, content: {
+				<string>                    mapRegion = .region(MKCoordinateRegion(center: locationManager.userLocation, latitudinalMeters: 10000, longitudinalMeters: 10000))
+                })
 </string>
 				<key>trailing</key>
-				<string>                    DetailsView(mapSelection: $mapSelection, show:$showDetails)
-                        .presentationDetents([.height(460)])
-                        .presentationBackgroundInteraction(.enabled(upThrough: .height(340)))
+				<string>                
+                
+            }
 </string>
 			</dict>
 			<key>type</key>

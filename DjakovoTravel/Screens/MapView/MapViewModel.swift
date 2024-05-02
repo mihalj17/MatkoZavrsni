@@ -13,7 +13,7 @@ class MapViewModel: ObservableObject {
     
     private let dataBaseService: DataBaseService
     
-    @Published var sightsInDjakovo = [Sight]()
+    @Published var sightsInDjakovo = [MKMapItem]()
     
     
     init(DataBaseService:DataBaseService){
@@ -30,7 +30,8 @@ class MapViewModel: ObservableObject {
                     print("Error fetching user data: \(error)")
                 } else if let sights = sights {
                     for sight in sights {
-                        self.sightsInDjakovo.append(sight)
+                        let sightToMapItem = sight.toMKMapItem()
+                        self.sightsInDjakovo.append(sightToMapItem)
                         print("Latitude: \(sight.latitude), Longitude: \(sight.longitude), Name:\(sight.name), id: \(sight.id) ")
                     }
                 }

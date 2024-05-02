@@ -16,39 +16,30 @@ struct MapView: View {
     
     @State var mapRegion: MapCameraPosition = .region(.myRegion)
     @State var showMap:Bool = false
-    @State private var mapSelection: Sight?
+    @State private var mapSelection: MKMapItem?
     @State private var showDetails = false
     
     
     
     var body: some View {
+
         VStack{
             if showMap{
                 Map(position: $mapRegion, selection: $mapSelection){
                     Marker("Matko", systemImage: "person.fill",coordinate: CLLocationCoordinate2D(latitude: locationManager.userLocation.latitude, longitude: locationManager.userLocation.longitude))
                     
-                    ForEach(viewModel.sightsInDjakovo) { sight in
-                        Marker(sight.name, systemImage: "\(sight.icon)", coordinate: CLLocationCoordinate2D(latitude: sight.latitude, longitude: sight.longitude))
-                            .tint(.black)
+                    ForEach(viewModel.sightsInDjakovo, id: \.self) {item in
+                        let placemark = item.placemark
+                        Marker(placemark.name ?? "",coordinate: placemark.coordinate)
                     }
                     
                     
                 }
+                
                 .onAppear(perform: {
                     mapRegion = .region(MKCoordinateRegion(center: locationManager.userLocation, latitudinalMeters: 10000, longitudinalMeters: 10000))
                 })
-                .onChange(of: mapSelection, {oldValue, newValue in
-                    showDetails = newValue != nil
-                })
-                .sheet(isPresented: $showDetails, content: {
-
-                    DetailsView(mapSelection: $mapSelection, show:$showDetails)
-                        .presentationDetents([.height(460)])
-                        .presentationBackgroundInteraction(.enabled(upThrough: .height(340)))
-                        .presentationCornerRadius(12)
-                        
-                    
-                })
+                
                 
                 
             }
@@ -58,7 +49,18 @@ struct MapView: View {
                 Text("Fetching your location")
             }
         }
-        
+        .onChange(of: mapSelection, {oldValue, newValue in
+            showDetails = newValue != nil
+        })
+        .sheet(isPresented: $showDetails, content: {
+            
+            DetailsView(mapSelection: $mapSelection, show:$showDetails)
+                .presentationDetents([.height(460)])
+                .presentationBackgroundInteraction(.enabled(upThrough: .height(340)))
+                .presentationCornerRadius(12)
+            
+            
+        })
         .onChange(of: locationManager.isLocationAuthorized) { oldValue, newValue in
             if newValue {
                 showMap = true
