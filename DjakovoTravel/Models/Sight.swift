@@ -14,15 +14,22 @@ struct Sight: Identifiable, Hashable{
     var name: String
     var latitude: Double
     var longitude: Double
-    var icon: String
+    var category: String
     
     
     
     func toMKMapItem() -> MKMapItem {
-            let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let placemark = MKPlacemark(coordinate: location, addressDictionary: nil)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = name
-            return mapItem
-        }
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let placemark = MKPlacemark(coordinate: location, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = name
+        
+        return mapItem
+    }
+    
+    
+    class CustomAnnotation: MKPointAnnotation {
+        var category: String = ""
+    }
+    
 }

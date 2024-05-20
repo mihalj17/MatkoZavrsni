@@ -23,8 +23,8 @@ class DataBaseService {
                        let longitude = document.data()["longitude"] as? Double,
                        let name = document.data()["name"] as? String,
                        let id = document.data()["id"] as? Int,
-                       let icon = document.data()["icon"] as? String{
-                        let sight = Sight(id: id, name: name, latitude: latitude, longitude: longitude, icon: icon)
+                       let category = document.data()["category"] as? String{
+                        let sight = Sight(id: id, name: name, latitude: latitude, longitude: longitude, category:category)
                         sights.append(sight)
                     }
                 }

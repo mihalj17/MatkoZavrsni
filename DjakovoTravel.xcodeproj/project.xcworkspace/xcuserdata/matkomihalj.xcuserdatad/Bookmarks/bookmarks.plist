@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>42</string>
+					<string>76</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>41</string>
+					<string>76</string>
 					<key>Timestamp</key>
-					<string>736342012.9272569</string>
+					<string>737908904.364334</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,17 +34,13 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                
-</string>
+				<string></string>
 				<key>leading</key>
-				<string>                    mapRegion = .region(MKCoordinateRegion(center: locationManager.userLocation, latitudinalMeters: 10000, longitudinalMeters: 10000))
-                })
+				<string>    MapView(viewModel: .init(DataBaseService: DataBaseService()))
+}
 </string>
 				<key>trailing</key>
-				<string>                
-                
-            }
-</string>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>bookmark</string>
